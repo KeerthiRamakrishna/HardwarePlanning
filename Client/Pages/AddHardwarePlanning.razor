@@ -1,0 +1,85 @@
+@page "/add-hardware-planning"
+@attribute [Authorize]
+
+<PageTitle>Add HardwarePlanning</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save HardwarePlanning</RadzenAlert>
+        <RadzenTemplateForm TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Data="@hardwarePlanning" Visible="@(hardwarePlanning != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="Program Increment" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@hardwarePlanning.ProgramIncrement" Name="ProgramIncrement" />
+              </ChildContent>
+            </RadzenFormField>
+      @*       <RadzenFormField Text="Status I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@hardwarePlanning.StatusID" Name="StatusID" />
+              </ChildContent>
+            </RadzenFormField> *@            <RadzenFormField Text="Status" Variant="Variant.Filled">                <ChildContent>                    <RadzenDropDownDataGrid Data="@statusForStatusID" TextProperty="StatusName" ValueProperty="StatusID" AllowClear=true                                            style="display: block; width: 100%" @bind-Value="@hardwarePlanning.StatusID" Name="StatusID"                                            SelectedValue=@statusForStatusIDValue Count=@statusForStatusIDCount LoadData=@statusForStatusIDLoadData />                </ChildContent>            </RadzenFormField>            <RadzenFormField Text="Architecture" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDropDownDataGrid Data="@architecturesForArchitectureID" TextProperty="ArchitectureName" ValueProperty="ArchitectureID" AllowClear=true
+                          style="display: block; width: 100%" @bind-Value="@hardwarePlanning.ArchitectureID" Name="ArchitectureID"
+                        SelectedValue=@architecturesForArchitectureIDValue Count=@architecturesForArchitectureIDCount LoadData=@architecturesForArchitectureIDLoadData />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Derivative" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDropDownDataGrid Data="@derivativesForDerivativeID" TextProperty="DerivativeName" ValueProperty="DerivativeID" AllowClear=true
+                          style="display: block; width: 100%" @bind-Value="@hardwarePlanning.DerivativeID" Name="DerivativeID"
+                        SelectedValue=@derivativesForDerivativeIDValue Count=@derivativesForDerivativeIDCount LoadData=@derivativesForDerivativeIDLoadData />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Test Pc" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDropDownDataGrid Data="@testPcsForTestPCID" TextProperty="TestPCName" ValueProperty="TestPCID" AllowClear=true
+                          style="display: block; width: 100%" @bind-Value="@hardwarePlanning.TestPCID" Name="TestPCID"
+                        SelectedValue=@testPcsForTestPCIDValue Count=@testPcsForTestPCIDCount LoadData=@testPcsForTestPCIDLoadData />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="H W Asset No" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@hardwarePlanning.HWAssetNo" Name="HWAssetNo" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="H Wevaluation Board" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@hardwarePlanning.HWevaluationBoard" Name="HWevaluationBoard" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="M C U" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@hardwarePlanning.MCU" Name="MCU" />
+              </ChildContent>
+            </RadzenFormField>
+            @* <RadzenFormField Text="Person I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@hardwarePlanning.PersonID" Name="PersonID" />
+              </ChildContent>
+            </RadzenFormField> *@            <RadzenFormField Text="Person" Variant="Variant.Filled">                <ChildContent>                    <RadzenDropDownDataGrid Data="@personForPersonID" TextProperty="PersonFirstName" ValueProperty="PersonID" AllowClear=true style="display: block; width: 100%" @bind-Value="@hardwarePlanning.PersonID" Name="PersonID" SelectedValue=@personForPersonIDValue Count=@personForPersonIDCount LoadData=@personForPersonIDLoadData />                </ChildContent>            </RadzenFormField>            <RadzenFormField Text="Start Week" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@hardwarePlanning.StartWeek" Name="StartWeek" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="End Week" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@hardwarePlanning.EndWeek" Name="EndWeek" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Start Date" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@hardwarePlanning.StartDate" Name="StartDate" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="End Date" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@hardwarePlanning.EndDate" Name="EndDate" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+
