@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Osporting.Client": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:59386;http://localhost:59387"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@page "/hardware-plannings"
+@attribute [Authorize]
+
+<PageTitle>HardwarePlannings</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="HardwarePlannings" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenSplitButton Icon="get_app" Text="Export" Click="@ExportClick" Variant="Variant.Flat" Shade="Shade.Lighter">
+                    <RadzenSplitButtonItem Text="Excel" Value="xlsx" />
+                    <RadzenSplitButtonItem Text="CSV" Value="csv" />
+                </RadzenSplitButton>
+                <RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddButtonClick" Variant="Variant.Flat" />
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" aria-label="Search by all string columns" />
+    <RadzenRow>
+      <RadzenColumn SizeMD=12>
+        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+            Data="@hardwarePlannings" LoadData="@Grid0LoadData" Count="@count" TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" RowSelect="@EditRow">
+            <Columns>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="HardwarePlanningID" Title="ID">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="ProgramIncrement" Title="Program Increment">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="Status.StatusName" Title="Status">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="Architecture.ArchitectureName" Title="Architecture">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="Derivative.DerivativeName" Title="Derivative">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="TestPc.TestPCName" Title="Test Pc">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="HWAssetNo" Title="H W Asset No">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="HWevaluationBoard" Title="HW evaluation Board">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="MCU" Title="M C U">
+                </RadzenDataGridColumn>                    <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="Person.PersonFirstName" Title="Person">                    </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="StartWeek" Title="Start Week">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="EndWeek" Title="End Week">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="StartDate" Title="Start Date">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Property="EndDate" Title="End Date">
+                </RadzenDataGridColumn>
+             @*    <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.HardwarePlanning" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+                    <Template Context="hardwarePlanning">
+
+                        <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Medium"
+                            Shade="Shade.Lighter" Variant="Variant.Flat"
+                            Click=@(args => GridDeleteButtonClick(args, hardwarePlanning)) @onclick:stopPropagation="true" />
+                    </Template>
+                </RadzenDataGridColumn> *@
+            </Columns>
+
+        </RadzenDataGrid>
+
+    </RadzenColumn>
+  </RadzenRow>
+</RadzenStack>
