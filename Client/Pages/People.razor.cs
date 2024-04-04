@@ -56,7 +56,7 @@ namespace Osporting.Client.Pages
         {
             try
             {
-                var result = await OSPortDBService.GetPeople(filter: $@"(contains(PersonFirstName,""{search}"") or contains(PersonLastName,""{search}"")) and {(string.IsNullOrEmpty(args.Filter)? "true" : args.Filter)}", expand: "Person1", orderby: $"{args.OrderBy}", top: args.Top, skip: args.Skip, count:args.Top != null && args.Skip != null);
+                var result = await OSPortDBService.GetPeople(filter: $@"(contains(PersonFirstName,""{search}"") or contains(PersonLastName,""{search}"")) and {(string.IsNullOrEmpty(args.Filter)? "true" : args.Filter)}", orderby: $"{args.OrderBy}", top: args.Top, skip: args.Skip, count:args.Top != null && args.Skip != null);
                 people = result.Value.AsODataEnumerable();
                 count = result.Count;
             }
@@ -111,7 +111,7 @@ namespace Osporting.Client.Pages
 {
     Filter = $@"{(string.IsNullOrEmpty(grid0.Query.Filter)? "true" : grid0.Query.Filter)}",
     OrderBy = $"{grid0.Query.OrderBy}",
-    Expand = "Person1",
+    Expand = "Person",
     Select = string.Join(",", grid0.ColumnsCollection.Where(c => c.GetVisible() && !string.IsNullOrEmpty(c.Property)).Select(c => c.Property.Contains(".") ? c.Property + " as " + c.Property.Replace(".", "") : c.Property))
 }, "People");
             }
@@ -122,7 +122,7 @@ namespace Osporting.Client.Pages
 {
     Filter = $@"{(string.IsNullOrEmpty(grid0.Query.Filter)? "true" : grid0.Query.Filter)}",
     OrderBy = $"{grid0.Query.OrderBy}",
-    Expand = "Person1",
+    Expand = "Person",
     Select = string.Join(",", grid0.ColumnsCollection.Where(c => c.GetVisible() && !string.IsNullOrEmpty(c.Property)).Select(c => c.Property.Contains(".") ? c.Property + " as " + c.Property.Replace(".", "") : c.Property))
 }, "People");
             }

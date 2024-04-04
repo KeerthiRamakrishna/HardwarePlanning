@@ -65,7 +65,7 @@ namespace Osporting.Client.Pages
             }
             catch (System.Exception ex)
             {
-                NotificationService.Notify(new NotificationMessage(){ Severity = NotificationSeverity.Error, Summary = $"Error", Detail = $"Unable to load Person1" });
+                NotificationService.Notify(new NotificationMessage(){ Severity = NotificationSeverity.Error, Summary = $"Error", Detail = $"Unable to load Person" });
             }
         }
         protected async Task FormSubmit()

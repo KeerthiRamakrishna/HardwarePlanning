@@ -23,7 +23,7 @@
         <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save Person</RadzenAlert>
         <RadzenTemplateForm TItem="Osporting.Server.Models.OSPortDB.Person" Data="@person" Visible="@(person != null && canEdit)" Submit="@FormSubmit">
           <RadzenStack>
-            <RadzenFormField Text="Person1" Variant="Variant.Filled">
+            <RadzenFormField Text="Person" Variant="Variant.Filled">
                   <ChildContent>
                     <RadzenDropDownDataGrid Data="@peopleForPersonID" TextProperty="PersonFirstName" ValueProperty="PersonID" AllowClear=true
                           style="display: block; width: 100%" @bind-Value="@person.PersonID" Name="PersonID"
