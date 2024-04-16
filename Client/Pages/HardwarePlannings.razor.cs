@@ -43,6 +43,8 @@ namespace Osporting.Client.Pages
         [Inject]
         protected SecurityService Security { get; set; }
 
+        Density Density = Density.Default;
+
         protected async Task Search(ChangeEventArgs args)
         {
             search = $"{args.Value}";

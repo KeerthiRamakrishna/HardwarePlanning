@@ -25,8 +25,10 @@
           <RadzenStack>
             <RadzenFormField Text="Person" Variant="Variant.Filled">
                   <ChildContent>
-                    <RadzenDropDownDataGrid Data="@peopleForPersonID" TextProperty="PersonFirstName" ValueProperty="PersonID" AllowClear=true
-                          style="display: block; width: 100%" @bind-Value="@person.PersonID" Name="PersonID"
+                    <RadzenDropDownDataGrid Data="@peopleForPersonID" TextProperty="PersonFirstName" ValueProperty="PersonID" 
+                        AllowClear=true
+                          style="display: block; width: 100%" 
+                          @bind-Value="@person.PersonID" Name="PersonID"
                         SelectedValue=@peopleForPersonIDValue Count=@peopleForPersonIDCount LoadData=@peopleForPersonIDLoadData />
               </ChildContent>
             </RadzenFormField>

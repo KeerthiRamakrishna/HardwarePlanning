@@ -66,14 +66,12 @@
             <RadzenFormField Text="M C U" Variant="Variant.Filled">
                   <ChildContent>
                     <RadzenTextBox style="display: block; width: 100%" @bind-Value="@hardwarePlanning.MCU" Name="MCU" />
-              </ChildContent>
+                  </ChildContent>
             </RadzenFormField>
-            <RadzenFormField Text="Person I D" Variant="Variant.Filled">
+            <RadzenFormField Text="Person" Variant="Variant.Filled">
                   <ChildContent>
-                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@hardwarePlanning.PersonID" Name="PersonID" />
-              </ChildContent>
-            </RadzenFormField>
-            <RadzenFormField Text="Start Week" Variant="Variant.Filled">
+                       <RadzenDropDownDataGrid Data="@peopleForPersonID" TextProperty="PersonFirstName" ValueProperty="PersonID"                         AllowClear=true style="display: block; width: 100%" @bind-Value="@hardwarePlanning.PersonID" Name="PersonID"                         SelectedValue=@peopleForPersonIDValue Count=@peopleForPersonIDCount                         LoadData=@peopleForPersonIDLoadData />                </ChildContent>
+            </RadzenFormField>            <RadzenFormField Text="Start Week" Variant="Variant.Filled">
                   <ChildContent>
                     <RadzenTextBox style="display: block; width: 100%" @bind-Value="@hardwarePlanning.StartWeek" Name="StartWeek" />
               </ChildContent>
