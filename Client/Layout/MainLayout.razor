@@ -2,16 +2,18 @@
 <RadzenComponents />
 
 <RadzenLayout style="grid-template-areas: 'rz-sidebar rz-header' 'rz-sidebar rz-body';">
-    <RadzenHeader Style="background-color: mediumseagreen">
+    <RadzenHeader>
+        @* <RadzenHeader Style="background-color: mediumseagreen"> *@
+
         <RadzenRow JustifyContent="JustifyContent.Start" AlignItems="AlignItems.Center" Gap="0">
             <RadzenColumn Size="5">
                 <RadzenSidebarToggle Click="@SidebarToggleClick"></RadzenSidebarToggle>
             </RadzenColumn>
             <RadzenColumn Size="7">
                 <RadzenStack AlignItems="AlignItems.Center" Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End">
-                    <RadzenProfileMenu Visible="@Security.IsAuthenticated()" Click="@ProfileMenuClick" Style="background-color: mediumseagreen">
-                        <ChildContent>
-
+                    @* <RadzenProfileMenu Visible="@Security.IsAuthenticated()" Click="@ProfileMenuClick" Style="background-color: mediumseagreen"> *@
+                        <RadzenProfileMenu Visible="@Security.IsAuthenticated()" Click="@ProfileMenuClick">
+                            <ChildContent>
                             <RadzenProfileMenuItem Path="profile" Icon="settings" Text="Profile" />
                             <RadzenProfileMenuItem Path="application-users" Icon="person" Text="Users" />
                             <RadzenProfileMenuItem Path="application-roles" Icon="security" Text="Roles" />
