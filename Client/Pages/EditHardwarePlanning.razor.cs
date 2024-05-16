@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
+using Osporting.Server.Models.OSPortDB;
 
 namespace Osporting.Client.Pages
 {
@@ -76,6 +77,35 @@ namespace Osporting.Client.Pages
                 NotificationService.Notify(new NotificationMessage(){ Severity = NotificationSeverity.Error, Summary = $"Error", Detail = $"Unable to load Architecture" });
             }
         }
+        protected Osporting.Server.Models.OSPortDB.Person person;
+        protected IEnumerable<Osporting.Server.Models.OSPortDB.Person> peopleForPersonID;
+        protected int peopleForPersonIDCount;
+        protected Osporting.Server.Models.OSPortDB.Person peopleForPersonIDValue;
+        protected async Task peopleForPersonIDLoadData(LoadDataArgs args)
+        {
+            try
+            {
+                var result = await OSPortDBService.GetPeople(top: args.Top, skip: args.Skip, count: args.Top != null && args.Skip != null, filter: $"contains(PersonFirstName, '{(!string.IsNullOrEmpty(args.Filter) ? args.Filter : "")}')", orderby: $"{args.OrderBy}");
+                peopleForPersonID = result.Value.AsODataEnumerable();
+                peopleForPersonIDCount = result.Count;
+
+                if (!object.Equals(hardwarePlanning.PersonID, null))
+                {
+                    var valueResult = await OSPortDBService.GetPeople(filter: $"PersonID eq {hardwarePlanning.PersonID}");
+                    var firstItem = valueResult.Value.FirstOrDefault();
+                    if (firstItem != null)
+                    {
+                        peopleForPersonIDValue = firstItem;
+                    }
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+                NotificationService.Notify(new NotificationMessage() { Severity = NotificationSeverity.Error, Summary = $"Error", Detail = $"Unable to load Person" });
+            }
+        }
+
         protected int statusForStatusIDCount;
         protected Osporting.Server.Models.OSPortDB.Status statusForStatusIDValue;
         protected async Task statusForStatusIDLoadData(LoadDataArgs args)

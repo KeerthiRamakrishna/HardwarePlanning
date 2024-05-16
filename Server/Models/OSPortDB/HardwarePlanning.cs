@@ -56,6 +56,9 @@ namespace Osporting.Server.Models.OSPortDB
         public string MCU { get; set; }
 
         [ConcurrencyCheck]
+        public string DeliveryTicket { get; set; }
+
+        [ConcurrencyCheck]
         public int? PersonID { get; set; }
         
         public Person Person { get; set; }
@@ -71,6 +74,9 @@ namespace Osporting.Server.Models.OSPortDB
 
         [ConcurrencyCheck]
         public DateTime? EndDate { get; set; }
+
+        [ConcurrencyCheck]
+        public string Comments { get; set; }
 
     }
 }

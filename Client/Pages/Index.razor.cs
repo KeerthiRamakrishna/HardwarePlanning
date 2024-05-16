@@ -46,7 +46,7 @@ namespace Osporting.Client.Pages
         {
             try
             {
-                var result = await OSPortDBService.GetHardwarePlannings(expand: "Architecture,Derivative,TestPc");
+                var result = await OSPortDBService.GetHardwarePlannings(expand: "Architecture,Derivative,Person,TestPc");
                 //IList<Appointment> appointments = (IList<Appointment>)result.Value.Select(x => new { start = x.StartDate , end = x.EndDate , Text = x.HWevaluationBoard }).ToList();
                 //List<Appointment> appointments = (result.Value).ToList();
 

@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Radzen.Blazor" Version="*" />
+    <PackageReference Include="Radzen.Blazor" Version="4.31.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
     <ProjectReference Include="..\Client\Osporting.Client.csproj" />
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />

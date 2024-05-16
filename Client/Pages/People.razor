@@ -5,7 +5,7 @@
 <RadzenStack>
     <RadzenRow AlignItems="AlignItems.Center">
         <RadzenColumn Size="12" SizeMD="6">
-            <RadzenText Text="People" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+            <RadzenText Text="People" TextStyle="TextStyle.H4" TagName="TagName.H1" style="margin: 0" />
         </RadzenColumn>
         <RadzenColumn Size="12" SizeMD="6">
             <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
@@ -23,20 +23,20 @@
         <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
             Data="@people" LoadData="@Grid0LoadData" Count="@count" TItem="Osporting.Server.Models.OSPortDB.Person" RowSelect="@EditRow">
             <Columns>
-                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.Person" Property="Person1.PersonFirstName" Title="Person1">
+                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.Person" Property="Person1.PersonFirstName" Title="Person">
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.Person" Property="PersonFirstName" Title="Person First Name">
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.Person" Property="PersonLastName" Title="Person Last Name">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.Person" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+               @*  <RadzenDataGridColumn TItem="Osporting.Server.Models.OSPortDB.Person" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
                     <Template Context="person">
 
                         <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Medium"
                             Shade="Shade.Lighter" Variant="Variant.Flat"
                             Click=@(args => GridDeleteButtonClick(args, person)) @onclick:stopPropagation="true" />
                     </Template>
-                </RadzenDataGridColumn>
+                </RadzenDataGridColumn> *@
             </Columns>
 
         </RadzenDataGrid>

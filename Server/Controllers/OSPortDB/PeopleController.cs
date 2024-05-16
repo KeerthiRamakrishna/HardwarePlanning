@@ -125,7 +125,7 @@ namespace Osporting.Server.Controllers.OSPortDB
                 this.context.SaveChanges();
 
                 var itemToReturn = this.context.People.Where(i => i.PersonID == key);
-                Request.QueryString = Request.QueryString.Add("$expand", "Person1");
+                Request.QueryString = Request.QueryString.Add("$expand", "Person");
                 this.OnAfterPersonUpdated(item);
                 return new ObjectResult(SingleResult.Create(itemToReturn));
             }
@@ -166,7 +166,7 @@ namespace Osporting.Server.Controllers.OSPortDB
                 this.context.SaveChanges();
 
                 var itemToReturn = this.context.People.Where(i => i.PersonID == key);
-                Request.QueryString = Request.QueryString.Add("$expand", "Person1");
+                Request.QueryString = Request.QueryString.Add("$expand", "Person");
                 return new ObjectResult(SingleResult.Create(itemToReturn));
             }
             catch(Exception ex)
@@ -201,7 +201,7 @@ namespace Osporting.Server.Controllers.OSPortDB
 
                 var itemToReturn = this.context.People.Where(i => i.PersonID == item.PersonID);
 
-                Request.QueryString = Request.QueryString.Add("$expand", "Person1");
+                Request.QueryString = Request.QueryString.Add("$expand", "Person");
 
                 this.OnAfterPersonCreated(item);
 
