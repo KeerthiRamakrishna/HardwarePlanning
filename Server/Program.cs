@@ -40,6 +40,7 @@ builder.Services.AddDbContext<ApplicationIdentityDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("OSPortDBConnection"));
 });
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>().AddEntityFrameworkStores<ApplicationIdentityDbContext>().AddDefaultTokenProviders();
 builder.Services.AddControllers().AddOData(o =>
 {
