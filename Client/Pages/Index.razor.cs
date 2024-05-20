@@ -50,7 +50,7 @@ namespace Osporting.Client.Pages
                 //IList<Appointment> appointments = (IList<Appointment>)result.Value.Select(x => new { start = x.StartDate , end = x.EndDate , Text = x.HWevaluationBoard }).ToList();
                 //List<Appointment> appointments = (result.Value).ToList();
 
-                var list1 = ((List<Appointment>)result.Value.Select(x => new Appointment { Start = x.StartDate, End = x.EndDate, Text = x.HWevaluationBoard }).ToList());
+                var list1 = ((List<Appointment>)result.Value.Select(x => new Appointment { Start = x.StartDate, End = x.EndDate, Text =  x.HWevaluationBoard + "-" + x.Person.PersonFirstName + "- StartDate:" + x.StartDate + "- EndDate:" + x.EndDate }).ToList());
                 appointments = list1;
 
                 //count = result.Count;
