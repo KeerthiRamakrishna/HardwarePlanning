@@ -104,8 +104,39 @@ namespace Osporting.Client.Pages
                 });
             }
         }
+        void RowRender(RowRenderEventArgs<Osporting.Server.Models.OSPortDB.HardwarePlanning> args)
+        {
+            args.Attributes.Add("style", $"font-weight: {(args.Data.Status.StatusName == "OPEN" ? "bold" : "normal")};");
+        }
 
-        protected async Task ExportClick(RadzenSplitButtonItem args)
+        void CellRender(DataGridCellRenderEventArgs<Osporting.Server.Models.OSPortDB.HardwarePlanning> args)
+        {
+            if (args.Column.Property == "STATUS")
+            {
+                args.Attributes.Add("style", $"background-color: {(args.Data.Status.StatusName == "Yes" ? "var(--rz-success)" : "var(--rz-base-background-color)")};");
+                args.Attributes.Add("class", args.Data.Status.StatusName == "No" ? "my-class" : "my-other-class");
+
+                //if (args.Data.Discount == 0)
+                //{
+                //    args.Attributes.Add("colspan", 2);
+                //}
+            }
+
+            //if (args.Column.Property == "OrderID")
+            //{
+            //    if (args.Data.OrderID == 10248 && args.Data.ProductID == 11 || args.Data.OrderID == 10250 && args.Data.ProductID == 41)
+            //    {
+            //        args.Attributes.Add("rowspan", 3);
+            //    }
+
+            //    if (args.Data.OrderID == 10249 && args.Data.ProductID == 14 || args.Data.OrderID == 10251 && args.Data.ProductID == 22)
+            //    {
+            //        args.Attributes.Add("rowspan", 2);
+            //    }
+            //}
+        }
+
+            protected async Task ExportClick(RadzenSplitButtonItem args)
         {
             if (args?.Value == "csv")
             {

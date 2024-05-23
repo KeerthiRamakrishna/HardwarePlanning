@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.OData.Formatter;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Security.Claims;
 
 namespace Osporting.Server.Controllers.OSPortDB
 {
@@ -137,7 +138,7 @@ namespace Osporting.Server.Controllers.OSPortDB
 
         [HttpPatch("/odata/OSPortDB/HardwarePlannings(HardwarePlanningID={HardwarePlanningID})")]
         [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
-        public IActionResult PatchHardwarePlanning(int key, [FromBody]Delta<Osporting.Server.Models.OSPortDB.HardwarePlanning> patch)
+        public async Task<IActionResult> PatchHardwarePlanning(int key, [FromBody]Delta<Osporting.Server.Models.OSPortDB.HardwarePlanning> patch)
         {
             try
             {
@@ -162,7 +163,7 @@ namespace Osporting.Server.Controllers.OSPortDB
 
                 this.OnHardwarePlanningUpdated(item);
                 this.context.HardwarePlannings.Update(item);
-                this.context.SaveChanges();
+                await context.SaveChangesAsync(User?.FindFirst(ClaimTypes.NameIdentifier).Value);
 
                 var itemToReturn = this.context.HardwarePlannings.Where(i => i.HardwarePlanningID == key);
                 Request.QueryString = Request.QueryString.Add("$expand", "Architecture,Derivative,TestPc");

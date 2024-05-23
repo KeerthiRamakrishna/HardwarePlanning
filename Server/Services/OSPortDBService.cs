@@ -521,7 +521,7 @@ namespace Osporting.Server
             entryToUpdate.CurrentValues.SetValues(hardwareplanning);
             entryToUpdate.State = EntityState.Modified;
 
-            Context.SaveChanges();
+            await Context.SaveChangesAsync();
 
             OnAfterHardwarePlanningUpdated(hardwareplanning);
 

@@ -50,8 +50,7 @@
                   <ChildContent>
                     <RadzenTextBox style="display: block; width: 100%" @bind-Value="@hardwarePlanning.MCU" Name="MCU" />
               </ChildContent>
-            </RadzenFormField>
-            @* <RadzenFormField Text="Person I D" Variant="Variant.Filled">
+            </RadzenFormField>            <RadzenFormField Text="Delivery Ticket" Variant="Variant.Filled">                <ChildContent>                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@hardwarePlanning.DeliveryTicket" Name="DeliveryTicket" />                </ChildContent>            </RadzenFormField>            @* <RadzenFormField Text="Person I D" Variant="Variant.Filled">
                   <ChildContent>
                     <RadzenNumeric style="display: block; width: 100%" @bind-Value="@hardwarePlanning.PersonID" Name="PersonID" />
               </ChildContent>
@@ -74,8 +73,7 @@
                   <ChildContent>
                     <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@hardwarePlanning.EndDate" Name="EndDate" />
               </ChildContent>
-            </RadzenFormField>
-          </RadzenStack>
+            </RadzenFormField>            <RadzenFormField Text="Comments" Variant="Variant.Filled">                <ChildContent>                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@hardwarePlanning.Comments" Name="Comments" />                </ChildContent>            </RadzenFormField>        </RadzenStack>
           <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
                     <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
                     <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />

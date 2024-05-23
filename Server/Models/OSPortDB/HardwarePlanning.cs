@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 namespace Osporting.Server.Models.OSPortDB
 {
     [Table("HardwarePlanning", Schema = "public")]
-    public partial class HardwarePlanning
+    public partial class HardwarePlanning : AuditableEntity
     {
 
         [NotMapped]
